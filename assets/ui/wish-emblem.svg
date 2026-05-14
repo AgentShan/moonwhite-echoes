@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="wish emblem">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="58%">
+      <stop offset="0" stop-color="#fff8df"/>
+      <stop offset="0.42" stop-color="#f4d481"/>
+      <stop offset="1" stop-color="#7fc7df" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="80" x2="432" y1="96" y2="416">
+      <stop stop-color="#fff8df"/>
+      <stop offset="0.48" stop-color="#f4d481"/>
+      <stop offset="1" stop-color="#8bc9e6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="222" fill="url(#glow)" opacity=".42"/>
+  <circle cx="256" cy="256" r="176" fill="none" stroke="url(#line)" stroke-width="10"/>
+  <circle cx="256" cy="256" r="116" fill="none" stroke="url(#line)" stroke-width="4" stroke-dasharray="34 18"/>
+  <path d="M256 60l34 119 121 11-101 68 28 118-82-66-82 66 28-118-101-68 121-11z" fill="none" stroke="url(#line)" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M256 148c27 49 62 84 112 108-50 24-85 59-112 108-27-49-62-84-112-108 50-24 85-59 112-108z" fill="#fff8df" opacity=".72"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 512" role="img" aria-label="moon rarity flare">
+  <defs>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".24" stop-color="#f8dc88" stop-opacity=".92"/>
+      <stop offset=".62" stop-color="#b98cff" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#8bc9e6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ray" x1="0" x2="1">
+      <stop stop-color="#fff8df" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fff8df"/>
+      <stop offset="1" stop-color="#fff8df" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="384" cy="256" rx="360" ry="232" fill="url(#moonGlow)"/>
+  <path d="M32 256h704M384 28v456M108 80l552 352M660 80L108 432" stroke="url(#ray)" stroke-width="5" stroke-linecap="round" opacity=".78"/>
+  <circle cx="384" cy="256" r="74" fill="none" stroke="#fff8df" stroke-width="7" opacity=".9"/>
+  <path d="M414 182a86 86 0 1 0 0 148 66 66 0 1 1 0-148z" fill="#fff8df" opacity=".9"/>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "moonwhite-echoes",
+  "version": "0.1.0",
+  "description": "原创二次元幻想风抽卡模拟器。",
+  "scripts": {
+    "serve": "python3 -m http.server 4174",
+    "test": "node tests/static-ui.test.js && node tests/gacha-engine.test.js",
+    "check": "node --check app.js && node --check gacha-engine.js && node --check data/characters.js && node --check data/pools.js && node --check scripts/generate-character-art.js"
+  }
+}
