@@ -2,7 +2,7 @@
 
 一个原创二次元幻想风抽卡模拟器。你可以在网页里体验单抽、十连、祈愿演出、保底机制、角色图鉴和抽卡记录。
 
-> 在线试玩：部署到 GitHub Pages 后，把链接放在这里。
+> 在线试玩：https://agentshan.github.io/moonwhite-echoes/
 
 ## 特色
 
