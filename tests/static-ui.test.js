@@ -5,6 +5,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
+const readme = fs.readFileSync(path.join(root, "README.md"), "utf8");
 const styles = fs.existsSync(path.join(root, "styles.css")) ? fs.readFileSync(path.join(root, "styles.css"), "utf8") : "";
 const imageScriptPath = path.join(root, "scripts/generate-character-art.js");
 
@@ -370,6 +371,32 @@ function testDarkRitualButtonThemeMarkers() {
   assert.ok(styles.includes("0 0 0 1px rgba(244, 212, 129, 0.32) inset"), "dark button inner edge missing");
 }
 
+function testDesktopSpotlightCompositionMarkers() {
+  [
+    "Desktop spotlight composition pass",
+    "@media (min-width: 900px)",
+    "grid-template-columns: minmax(18rem, 34%) minmax(0, 1fr)",
+    "grid-column: 1 / -1",
+    "transform: translateY(-50%)",
+    "align-self: center",
+    "justify-self: start",
+    ".result-hero-copy-panel.result-hero-info-strip",
+    "grid-template-columns: 1fr",
+    ".result-hero-info-strip .result-focus-actions"
+  ].forEach((marker) => {
+    assert.ok(styles.includes(marker), `${marker} desktop spotlight marker missing`);
+  });
+}
+
+function testReadmeIsPublicShareFocused() {
+  ["在线试玩", "特色", "声明", "License"].forEach((marker) => {
+    assert.ok(readme.includes(marker), `${marker} README marker missing`);
+  });
+  ["## 本地运行", "## 部署", "## 开发"].forEach((marker) => {
+    assert.ok(!readme.includes(marker), `${marker} should be removed from public README`);
+  });
+}
+
 function testImageGenerationScriptMarkers() {
   const script = fs.readFileSync(imageScriptPath, "utf8");
   ["--dry-run", "--all", "--id", "--overwrite", "OPENAI_API_KEY", "gpt-image-2"].forEach((needle) => {
@@ -540,6 +567,8 @@ testRitualRebuildMarkers();
 testSimplifiedAnimationControls();
 testMobileUsabilityMarkers();
 testDarkRitualButtonThemeMarkers();
+testDesktopSpotlightCompositionMarkers();
+testReadmeIsPublicShareFocused();
 testImageGenerationScriptMarkers();
 testStartPullTimeoutIsOwnedByCurrentBatch();
 testResetDataRequiresConfirmation();

@@ -4324,3 +4324,98 @@ button:focus-visible,
 .gallery-card {
   color: inherit;
 }
+
+/* Desktop spotlight composition pass */
+@media (min-width: 900px) {
+  .result-hero-stage {
+    grid-template-columns: minmax(18rem, 34%) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0;
+    height: clamp(31rem, 58vh, 39rem);
+    min-height: 0;
+    padding: 0;
+    background:
+      linear-gradient(90deg, rgba(9, 14, 25, 0.86), rgba(9, 14, 25, 0.2) 48%, rgba(9, 14, 25, 0.76)),
+      radial-gradient(circle at 29% 45%, rgba(244, 212, 129, 0.28), transparent 20rem),
+      #13213a;
+  }
+
+  .result-hero-visual {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    position: relative;
+    z-index: 1;
+    align-self: stretch;
+    height: 100%;
+    min-height: 0;
+    border-width: 0;
+    border-radius: 0;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(139, 201, 230, 0.1) 58%, rgba(10, 16, 30, 0.22)),
+      radial-gradient(circle at 28% 48%, rgba(255, 248, 218, 0.2), transparent 18rem);
+  }
+
+  .result-hero-visual::after {
+    left: clamp(1.6rem, 4.2vw, 4.2rem);
+    top: 50%;
+    width: min(32vw, 29rem);
+    height: auto;
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+  }
+
+  .result-hero-stage .result-hero-aura {
+    left: 27%;
+    top: 50%;
+    width: min(34vw, 31rem);
+  }
+
+  .result-hero-stage .result-hero-art-wrap {
+    position: absolute;
+    left: clamp(2.1rem, 5vw, 5rem);
+    top: 50%;
+    width: clamp(16rem, 25vw, 24rem);
+    height: 36rem;
+    max-height: calc(100% - 3rem);
+    aspect-ratio: 2 / 3;
+    transform: translateY(-50%);
+  }
+
+  .result-hero-ghost-art {
+    inset: -18% auto -18% -6%;
+    width: 52%;
+    opacity: 0.24;
+    filter: blur(22px) saturate(1.16);
+  }
+
+  .result-hero-copy-panel.result-hero-info-strip {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: start;
+    width: min(40rem, calc(100% - clamp(1.6rem, 4vw, 4rem)));
+    min-height: 15rem;
+    margin: 0 clamp(1.4rem, 3vw, 3.5rem) 0 0;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: clamp(1.35rem, 2.3vw, 2rem);
+    background:
+      linear-gradient(145deg, rgba(255, 248, 218, 0.16), rgba(255, 255, 255, 0.035)),
+      linear-gradient(110deg, rgba(14, 20, 34, 0.92), rgba(37, 52, 82, 0.82));
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.14) inset,
+      0 28px 74px rgba(5, 10, 18, 0.36);
+  }
+
+  .result-hero-copy-panel strong {
+    font-size: clamp(3.2rem, 5.4vw, 5.6rem);
+  }
+
+  .result-hero-copy-panel p {
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  }
+
+  .result-hero-info-strip .result-focus-actions {
+    justify-content: flex-start;
+  }
+}

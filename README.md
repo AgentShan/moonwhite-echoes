@@ -12,44 +12,6 @@
 - 图鉴、角色详情、抽卡记录和本地数据清空
 - 纯静态前端，无需后端服务
 
-## 本地运行
-
-```bash
-npm run serve
-```
-
-然后打开 `http://localhost:4174`。
-
-也可以直接使用 Python 静态服务：
-
-```bash
-python3 -m http.server 4174
-```
-
-## 部署
-
-这是一个静态网页项目，可以直接部署到 GitHub Pages、Vercel 或 Netlify。
-
-如果使用 GitHub Pages：
-
-1. 将仓库推送到 GitHub
-2. 在仓库设置中打开 Pages
-3. 选择 `main` 分支和根目录 `/`
-4. 等待生成访问链接
-
-## 开发
-
-```bash
-npm test
-npm run check
-```
-
-角色图生成脚本支持查看内置提示词：
-
-```bash
-node scripts/generate-character-art.js --dry-run --all
-```
-
 ## 声明
 
 本项目为原创练习项目，不使用现有商业游戏角色、真实游戏 UI 素材或真实充值功能。抽卡结果仅用于娱乐模拟。
