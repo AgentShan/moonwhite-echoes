@@ -603,6 +603,12 @@
     const revealPercent = ((revealedCount / batchCount) * 100).toFixed(0);
     const bestResult = getBestResult(appState.activeBatch) || appState.activeBatch[0];
     const featuredResult = bestResult;
+    const featuredStory = featuredResult.bio || featuredResult.story || featuredResult.quote || "关于她的回响记录仍在整理中。";
+    const featuredQuote = featuredResult.quote || "月白神殿记录下了这一次相遇。";
+    const featuredTags = [featuredResult.element, featuredResult.role, featuredResult.faction]
+      .filter(Boolean)
+      .map((tag) => `<span>${escapeHtml(tag)}</span>`)
+      .join("");
     const shouldShowResultRail = appState.activeBatch.length > 1;
     const counts = appState.activeBatch.reduce((summary, result) => {
       summary[result.rarity] += 1;
@@ -652,10 +658,16 @@
                 ${renderCharacterImage(featuredResult, { className: "result-spotlight-art card-art", mode: "hero", eager: true })}
               </div>
             </div>
-            <div class="result-hero-copy-panel result-hero-info-strip result-spotlight-copy">
+            <div class="result-hero-copy-panel result-hero-info-strip result-spotlight-copy result-hero-intro-panel">
               <span class="result-hero-kicker">${escapeHtml(rarityTone(featuredResult.rarity || "glimmer"))}回响</span>
               <strong>${escapeHtml(featuredResult.name || "等待揭示")}</strong>
-              <p>${escapeHtml(featuredResult.title || "星辉仍在汇聚")}</p>
+              <p class="result-hero-title">${escapeHtml(featuredResult.title || "星辉仍在汇聚")}</p>
+              <div class="result-hero-tags" aria-label="角色标签">${featuredTags}</div>
+              <div class="result-hero-lore">
+                <span>人物小传</span>
+                <p>${escapeHtml(featuredStory)}</p>
+                <em>${escapeHtml(featuredQuote)}</em>
+              </div>
               <div class="result-focus-actions">
                 ${button("open-detail", "查看详情", `data-id="${escapeHtml(featuredResult.id || "")}"`)}
               </div>

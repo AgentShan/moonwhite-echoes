@@ -375,17 +375,38 @@ function testDesktopSpotlightCompositionMarkers() {
   [
     "Desktop spotlight composition pass",
     "@media (min-width: 900px)",
-    "grid-template-columns: minmax(18rem, 34%) minmax(0, 1fr)",
-    "grid-column: 1 / -1",
-    "transform: translateY(-50%)",
-    "align-self: center",
-    "justify-self: start",
+    "grid-template-columns: minmax(18rem, 38%) minmax(0, 1fr)",
+    "grid-column: 1",
+    "grid-column: 2",
+    "result-hero-intro-panel",
+    "result-hero-lore",
+    "result-hero-tags",
     ".result-hero-copy-panel.result-hero-info-strip",
     "grid-template-columns: 1fr",
     ".result-hero-info-strip .result-focus-actions"
   ].forEach((marker) => {
     assert.ok(styles.includes(marker), `${marker} desktop spotlight marker missing`);
   });
+  ["result-hero-intro-panel", "result-hero-lore", "result-hero-tags", "人物小传"].forEach((marker) => {
+    assert.ok(app.includes(marker), `${marker} spotlight intro app marker missing`);
+  });
+}
+
+function testResultSpotlightShowsSideIntroduction() {
+  const { moonwhiteApp, windowMock, timers } = createVmApp({
+    setTimeout(callback) {
+      timers.push({ callback });
+      return timers.length;
+    },
+    clearTimeout() {}
+  });
+  moonwhiteApp.startPull(1);
+  timers[0].callback();
+
+  assert.ok(windowMock.rootElement.innerHTML.includes("result-hero-intro-panel"), "spotlight should use a right-side intro panel");
+  assert.ok(windowMock.rootElement.innerHTML.includes("result-hero-lore"), "spotlight should include character lore");
+  assert.ok(windowMock.rootElement.innerHTML.includes("人物小传"), "spotlight should label the character introduction");
+  assert.ok(windowMock.rootElement.innerHTML.includes("result-hero-tags"), "spotlight should show character tags");
 }
 
 function testReadmeIsPublicShareFocused() {
@@ -568,6 +589,7 @@ testSimplifiedAnimationControls();
 testMobileUsabilityMarkers();
 testDarkRitualButtonThemeMarkers();
 testDesktopSpotlightCompositionMarkers();
+testResultSpotlightShowsSideIntroduction();
 testReadmeIsPublicShareFocused();
 testImageGenerationScriptMarkers();
 testStartPullTimeoutIsOwnedByCurrentBatch();
